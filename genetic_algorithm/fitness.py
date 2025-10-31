@@ -5,7 +5,7 @@ Developed by: Student 2
 """
 
 import numpy as np
-from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
@@ -17,7 +17,7 @@ class FitnessEvaluator:
     Fitness is based on classification accuracy and feature count
     """
     
-    def __init__(self, X, y, model_type='random_forest', alpha=0.9, cv_folds=3):
+    def __init__(self, X, y, model_type='random_forest', alpha=0.9, cv_folds=3, use_fast_evaluation=True):
         """
         Initialize the FitnessEvaluator
         
@@ -28,14 +28,22 @@ class FitnessEvaluator:
             alpha: Weight for accuracy (1-alpha for feature reduction)
                   Higher alpha = prioritize accuracy
                   Lower alpha = prioritize fewer features
-            cv_folds: Number of cross-validation folds
+            cv_folds: Number of cross-validation folds (only used if use_fast_evaluation=False)
+            use_fast_evaluation: If True, uses train-test split (MUCH faster for web usage)
         """
         self.X = X
         self.y = y
         self.model_type = model_type
         self.alpha = alpha
         self.cv_folds = cv_folds
+        self.use_fast_evaluation = use_fast_evaluation
         self.n_features = X.shape[1]
+        
+        # For fast evaluation, create train-test split once
+        if use_fast_evaluation:
+            self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
+                X, y, test_size=0.3, random_state=42, stratify=y
+            )
         
         # Initialize ML model
         self.model = self._create_model()
@@ -90,22 +98,31 @@ class FitnessEvaluator:
             chromosome.accuracy = 0.0
             return 0.0
         
-        # Extract selected features from dataset
-        X_selected = self.X[:, selected_features]
-        
-        # Evaluate model performance using cross-validation
+        # Evaluate model performance
         try:
-            cv_scores = cross_val_score(
-                self.model, 
-                X_selected, 
-                self.y,
-                cv=self.cv_folds,
-                scoring='accuracy',
-                n_jobs=-1
-            )
-            accuracy = np.mean(cv_scores)
+            if self.use_fast_evaluation:
+                # Fast evaluation: simple train-test split (10-20x faster!)
+                X_train_selected = self.X_train[:, selected_features]
+                X_test_selected = self.X_test[:, selected_features]
+                
+                # Create a fresh model instance for this evaluation
+                model = self._create_model()
+                model.fit(X_train_selected, self.y_train)
+                accuracy = model.score(X_test_selected, self.y_test)
+            else:
+                # Slow evaluation: cross-validation (accurate but slow)
+                X_selected = self.X[:, selected_features]
+                cv_scores = cross_val_score(
+                    self.model, 
+                    X_selected, 
+                    self.y,
+                    cv=self.cv_folds,
+                    scoring='accuracy',
+                    n_jobs=-1
+                )
+                accuracy = np.mean(cv_scores)
         except Exception as e:
-            print(f"Error during cross-validation: {str(e)}")
+            print(f"Error during evaluation: {str(e)}")
             accuracy = 0.0
         
         # Calculate feature reduction ratio
@@ -231,7 +248,7 @@ class FitnessEvaluator:
 
 # Example usage
 if __name__ == '__main__':
-    from chromosome import Chromosome
+    from .chromosome import Chromosome
     from sklearn.datasets import load_iris
     
     print("="*60)

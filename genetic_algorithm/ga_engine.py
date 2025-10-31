@@ -6,9 +6,9 @@ Developed by: Student 2
 
 import numpy as np
 import time
-from chromosome import Chromosome
-from fitness import FitnessEvaluator
-from operators import GeneticOperators
+from .chromosome import Chromosome
+from .fitness import FitnessEvaluator
+from .operators import GeneticOperators
 
 
 class GeneticAlgorithm:

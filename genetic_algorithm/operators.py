@@ -6,7 +6,7 @@ Developed by: Student 2
 
 import numpy as np
 import random
-from chromosome import Chromosome
+from .chromosome import Chromosome
 
 
 class GeneticOperators:
