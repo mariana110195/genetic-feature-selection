@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block title %}Home - GA Feature Selection{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="text-center mb-5">
+        <h1 class="display-4">
+            <i class="fas fa-dna text-primary"></i>
+            Genetic Algorithm Feature Selection
+        </h1>
+        <p class="lead text-muted">
+            Optimize your machine learning models by selecting the most important features
+        </p>
+    </div>
+
+    <!-- Project Description -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="feature-card">
+                <h3><i class="fas fa-info-circle text-primary"></i> About This Project</h3>
+                <p>
+                    This project uses <strong>Genetic Algorithms (GA)</strong> to solve the feature selection problem 
+                    in machine learning. When working with large datasets containing hundreds or thousands of features, 
+                    we face several challenges:
+                </p>
+                <ul>
+                    <li>Difficulty selecting the most important features</li>
+                    <li>Increased training time for models</li>
+                    <li>Risk of overfitting</li>
+                    <li>Difficulty interpreting complex models</li>
+                </ul>
+                <p>
+                    Our GA-based solution finds the optimal set of features that provides the best model performance 
+                    while minimizing the number of features used.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Features -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="fas fa-robot fa-3x text-primary mb-3"></i>
+                <h4>Intelligent Selection</h4>
+                <p>Uses genetic algorithms to evolve the best feature combinations</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="fas fa-chart-bar fa-3x text-success mb-3"></i>
+                <h4>Performance Metrics</h4>
+                <p>Comprehensive evaluation with multiple ML models</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="fas fa-balance-scale fa-3x text-warning mb-3"></i>
+                <h4>Method Comparison</h4>
+                <p>Compare GA results with traditional statistical methods</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="feature-card">
+                <h3><i class="fas fa-cogs text-primary"></i> How It Works</h3>
+                <ol>
+                    <li><strong>Upload Data:</strong> Upload your dataset (CSV or Excel format)</li>
+                    <li><strong>Configure GA:</strong> Set genetic algorithm parameters (population size, generations, etc.)</li>
+                    <li><strong>Run Evolution:</strong> GA evolves to find optimal feature subset</li>
+                    <li><strong>Evaluate Results:</strong> Compare performance with different feature sets</li>
+                    <li><strong>Compare Methods:</strong> See how GA performs vs. traditional methods</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sample Datasets -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="feature-card">
+                <h3><i class="fas fa-database text-primary"></i> Sample Datasets Available</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>Iris Dataset:</strong> 4 features, 150 samples (Easy)</li>
+                            <li><strong>Breast Cancer:</strong> 30 features, 569 samples (Medium)</li>
+                            <li><strong>Wine Dataset:</strong> 13 features, 178 samples (Medium)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>High-Dimensional:</strong> 50 features, 1000 samples (Hard)</li>
+                            <li><strong>Multiclass:</strong> 20 features, 800 samples (Medium)</li>
+                            <li><strong>Quick Test:</strong> 5 features, 100 samples (Easy)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-5">
+        <a href="/upload" class="btn btn-primary btn-lg">
+            <i class="fas fa-upload"></i> Get Started - Upload Your Data
+        </a>
+    </div>
+
+    <!-- Team Info -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="feature-card bg-light">
+                <h4 class="text-center mb-4">
+                    <i class="fas fa-users text-primary"></i> Development Team
+                </h4>
+                <p class="text-center text-muted mb-4">
+                    Our talented team members and their contributions to this project
+                </p>
+                <div class="row text-center">
+                    <div class="col-md-4 mb-4">
+                        <div class="team-member-card">
+                            <i class="fas fa-user-circle fa-3x text-primary mb-3"></i>
+                            <h5 class="mb-2">Ghaith</h5>
+                            <p class="text-muted mb-2"><strong>Data Processing Engineer</strong></p>
+                            <ul class="text-start small">
+                                <li>Data loading and validation</li>
+                                <li>Preprocessing and cleaning</li>
+                                <li>Feature encoding and normalization</li>
+                                <li>Dataset quality control</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="team-member-card">
+                            <i class="fas fa-user-circle fa-3x text-success mb-3"></i>
+                            <h5 class="mb-2">Mariana</h5>
+                            <p class="text-muted mb-2"><strong>Genetic Algorithm Core Developer</strong></p>
+                            <ul class="text-start small">
+                                <li>GA engine implementation</li>
+                                <li>Chromosome and fitness evaluation</li>
+                                <li>Selection, crossover, mutation operators</li>
+                                <li>Evolution optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="team-member-card">
+                            <i class="fas fa-user-circle fa-3x text-warning mb-3"></i>
+                            <h5 class="mb-2">Maryam</h5>
+                            <p class="text-muted mb-2"><strong>Machine Learning Engineer</strong></p>
+                            <ul class="text-start small">
+                                <li>ML model implementations</li>
+                                <li>Model evaluation and metrics</li>
+                                <li>Cross-validation strategies</li>
+                                <li>Feature importance analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="team-member-card">
+                            <i class="fas fa-user-circle fa-3x text-danger mb-3"></i>
+                            <h5 class="mb-2">Youssef</h5>
+                            <p class="text-muted mb-2"><strong>Frontend Developer</strong></p>
+                            <ul class="text-start small">
+                                <li>User interface design</li>
+                                <li>Interactive visualizations</li>
+                                <li>Responsive layouts</li>
+                                <li>Client-side JavaScript logic</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="team-member-card">
+                            <i class="fas fa-user-circle fa-3x text-info mb-3"></i>
+                            <h5 class="mb-2">Yazan</h5>
+                            <p class="text-muted mb-2"><strong>Backend Integration Engineer</strong></p>
+                            <ul class="text-start small">
+                                <li>Flask API development</li>
+                                <li>Route handling and endpoints</li>
+                                <li>Server-client integration</li>
+                                <li>Error handling and validation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="team-member-card">
+                            <i class="fas fa-user-circle fa-3x text-secondary mb-3"></i>
+                            <h5 class="mb-2">Ehab</h5>
+                            <p class="text-muted mb-2"><strong>Comparison & Analysis Specialist</strong></p>
+                            <ul class="text-start small">
+                                <li>Traditional feature selection methods</li>
+                                <li>Statistical analysis implementation</li>
+                                <li>Performance comparison algorithms</li>
+                                <li>Results visualization and reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
